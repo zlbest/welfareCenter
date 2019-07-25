@@ -1,0 +1,1 @@
+welafareCenter miniProgram
