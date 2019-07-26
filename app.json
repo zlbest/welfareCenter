@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/goodsList/goodsList",
+    "pages/goodsDetail/goodsDetail",
+    "pages/exchangeFailed/exchangeFailed",
+
+    "pages/exchangeList/exchangeList",
+    "pages/receiverAddress/receiverAddress"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "福利社区",
+    "navigationBarTextStyle": "black"
+  },
+  "debug": false
+}
