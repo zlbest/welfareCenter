@@ -1,2 +1,0 @@
-welafareCenter miniProgram
-test branch
