@@ -1,2 +1,31 @@
 <!--pages/goodsList/goodsList.wxml-->
-<text>pages/goodsList/goodsList.wxml</text>
+<scroll-view class="container" scroll-y bindscrolltolower="getGoodsList">
+  <view class="flex-row nav-top">
+    <view class="lastCoin"><text class="gray">剩余平安时间币：</text>{{lastTimeCoin}}</view>
+    <view class="record-btn" bindtap="goExchangeList">兑换记录</view>
+  </view>
+  <!-- 空白列表 -->
+  <block wx:if="{{!showLoading && goodsList.length==0}}">
+    <view class="flex-column goods-none">
+      <image src="../../images/empty_icon.png"></image>
+      <text class="none-text">商品正在赶来的路上，敬请期待喔~</text>
+    </view>
+  </block>
+  <!-- 商品列表 -->
+  <block wx:else>
+    <view class="flex-row goods-item" wx:for="{{goodsList}}" wx:key="index">
+      <image class="goods-img" src='{{}}'></image>
+      <view class="flex-column goods-detail">
+        <text class="goods-name">商品名称商品名称商品名称</text>
+        <view class="flex-row detail-bottom">
+          <view class="goods-timeCoin">
+            <text>500.00</text>
+            <text class="unit">平安时间币</text>
+          </view>
+          <view class="exchange-btn">兑换</view>
+        </view>
+      </view>
+    </view>
+    <view class="list-bottom" wx:if="{{ showLoading==true }}">{{loadingText}}</view>
+  </block>
+</scroll-view>  

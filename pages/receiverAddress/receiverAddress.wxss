@@ -1,1 +1,27 @@
 /* pages/receiverAddress/receiverAddress.wxss */
+.container{
+  padding-left: 40rpx;
+}
+.address-line{
+  width: 100%;
+  height: 112rpx;
+  border: 1rpx solid #F7F7F7;
+}
+.address-label{
+  font-size: 32rpx;
+  color: #2B2B2B;
+  min-width: 128rpx;
+}
+.address-input{
+  flex-grow: 1;
+  padding-left: 40rpx;
+  font-size: 16px;
+  color: #999;
+}
+.more{
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAYCAYAAADKx8xXAAAApElEQVQ4T53UWw6EIAwF0FuWRLq9GQ0uD1gTphMljPIo8GfCSal9EAB473ciMsz8lW/NoRjjnlLarsuHFlMI4QPAFVFUmASs4B+sYWOMs9beKbzSznAW/8EZ/IJaXIUa3IQj3IWNUjlm3oawhZeg1HgIW1019XMA5D5Wl6NEkreqAZ6oCrWT0m3yWqR7TJpj1UP5qdrnlUO5vjqWl5WEv/DUejwBEnB86ZnEe1gAAAAASUVORK5CYII=") right 22rpx center no-repeat;
+  background-size: 14rpx 24rpx;
+}
+.common-btn,.disable-btn{
+  margin-top: 86rpx;
+}

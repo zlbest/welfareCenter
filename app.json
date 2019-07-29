@@ -1,11 +1,10 @@
 {
-  "pages": [
+  "pages": ["pages/receiverAddress/receiverAddress",
     "pages/goodsList/goodsList",
     "pages/goodsDetail/goodsDetail",
     "pages/exchangeFailed/exchangeFailed",
-
-    "pages/exchangeList/exchangeList",
-    "pages/receiverAddress/receiverAddress"
+    "pages/exchangeList/exchangeList"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,5 +16,6 @@
     "request": 10000,
     "downloadFile": 10000
   },
-  "debug": false
+  "debug": false,
+  "sitemapLocation": "sitemap.json"
 }
