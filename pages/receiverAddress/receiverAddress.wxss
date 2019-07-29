@@ -4,8 +4,7 @@
 }
 .address-line{
   width: 100%;
-  height: 112rpx;
-  border: 1rpx solid #F7F7F7;
+  border-bottom: 1rpx solid #F7F7F7;
 }
 .address-label{
   font-size: 32rpx;
@@ -13,15 +12,91 @@
   min-width: 128rpx;
 }
 .address-input{
+  height: 112rpx;
+  line-height: 112rpx;
   flex-grow: 1;
   padding-left: 40rpx;
   font-size: 16px;
   color: #999;
 }
+.address-textarea{
+  height: 132rpx;
+  flex-grow: 1;
+  padding: 34rpx 0 34rpx 40rpx;
+  font-size: 16px;
+  color: #999;
+}
+.address-placeholder{
+  color: #d1d1d1;
+}
 .more{
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAYCAYAAADKx8xXAAAApElEQVQ4T53UWw6EIAwF0FuWRLq9GQ0uD1gTphMljPIo8GfCSal9EAB473ciMsz8lW/NoRjjnlLarsuHFlMI4QPAFVFUmASs4B+sYWOMs9beKbzSznAW/8EZ/IJaXIUa3IQj3IWNUjlm3oawhZeg1HgIW1019XMA5D5Wl6NEkreqAZ6oCrWT0m3yWqR7TJpj1UP5qdrnlUO5vjqWl5WEv/DUejwBEnB86ZnEe1gAAAAASUVORK5CYII=") right 22rpx center no-repeat;
   background-size: 14rpx 24rpx;
 }
-.common-btn,.disable-btn{
+.btn1{
   margin-top: 86rpx;
+}
+
+
+/* 确认收货地址弹窗 */
+.address-pop{
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+}
+.address-mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+}
+.address-wrapper{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: white;
+}
+.pop-title{
+  position: relative;
+  font-size: 36rpx;
+  line-height: 129rpx;
+  border-bottom: 1rpx solid #F1F3F6;
+  text-align: center;
+}
+.pop-close{
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42rpx;
+  height: 42rpx;
+}
+.pop-detail{
+  padding: 39rpx 40rpx;
+}
+.pop-text{
+  align-items: flex-start;
+}
+.pop-label{
+  display: inline-block;
+  min-width: 100rpx;
+}
+.gray-text{
+  color: #999;
+}
+.pop-tips{
+  font-size: 24rpx;
+  line-height: 80rpx;
+  color: #FE8606;
+  background: rgba(254,134,6,0.13);
+  text-align: center;
+}
+.btn2{
+  margin: 32rpx auto;
 }
