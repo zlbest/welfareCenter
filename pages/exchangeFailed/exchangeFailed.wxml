@@ -1,2 +1,7 @@
 <!--pages/exchangeFailed/exchangeFailed.wxml-->
-<text>pages/exchangeFailed/exchangeFailed.wxml</text>
+<view class=" flex-column container">
+  <image src="../../images/failed_icon.png"></image>
+  <text>未成功兑换</text>
+  <text>{{goodsName}}</text>
+  <text class="reason">原因：{{reason}}</text>
+</view>

@@ -1,6 +1,6 @@
 // pages/goodsList/goodsList.js
+var app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -9,7 +9,7 @@ Page({
     pageIndex: 0,
     pageSize: 20,
     allPages: 1,
-    goodsList: [1],
+    goodsList: [],
     showLoading: true,
     loadingText: '加载中...'
   },
@@ -30,8 +30,9 @@ Page({
   getGoodsList: function () {
     if (this.data.pageIndex == this.data.allPages) {
       this.setData({
-        loadingText: '没有更多了'
+        loadingText: '没有更多了...'
       });
+      wx.stopPullDownRefresh();
       return;
     }
     this.setData({
@@ -58,13 +59,22 @@ Page({
           }
           if (data.rows.length < that.data.pageSize) {
             that.setData({
-              loadingText: '没有更多了'
+              loadingText: '没有更多了...'
             });
           }
+        }else {
+          wx.showToast({
+            title: data.responseMsg || '',
+            icon: 'none',
+            duration: 2000
+          });
         }
       });
   },
-
+  //跳转商品详情页
+  getDetail: function (e) {
+    wx.navigateTo({ url: '../goodsDetail/goodsDetail?goodsNo=' + e.target.dataset.id });
+  },
   //获取页面数据
   getPageData: function () {
     wx.showLoading({

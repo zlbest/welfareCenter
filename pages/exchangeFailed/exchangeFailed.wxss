@@ -1,1 +1,21 @@
 /* pages/exchangeFailed/exchangeFailed.wxss */
+.container {
+  width: 100vw;
+  height: 100vh;
+  justify-content: flex-start;
+  background: #fff;
+}
+.container > image {
+  width: 160rpx;
+  height: 160rpx;
+  margin: 240rpx 0 40rpx;
+}
+.container > text {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+.container > .reason {
+  margin-top: 50rpx;
+  color: #999;
+}

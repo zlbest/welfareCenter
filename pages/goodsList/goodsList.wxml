@@ -13,16 +13,16 @@
   </block>
   <!-- 商品列表 -->
   <block wx:else>
-    <view class="flex-row goods-item" wx:for="{{goodsList}}" wx:key="index">
-      <image class="goods-img" src='{{}}'></image>
+    <view class="flex-row goods-item" wx:for="{{goodsList}}" wx:key="index" data-id="{{item.goodsNo}}" bindtap="getDetail">
+      <image class="goods-img" src='{{item.pictureUrl}}'></image>
       <view class="flex-column goods-detail">
-        <text class="goods-name">商品名称商品名称商品名称</text>
+        <text class="goods-name">{{item.goodsName}}</text>
         <view class="flex-row detail-bottom">
           <view class="goods-timeCoin">
-            <text>500.00</text>
+            <text>{{item.exchangePrice || 0}}</text>
             <text class="unit">平安时间币</text>
           </view>
-          <view class="exchange-btn">兑换</view>
+          <view class="exchange-btn" style="opacity: {{item.availableNum <= 0 ? '0.3':'1'}}">{{item.availableNum <= 0 ? '已兑完':'兑换'}}</view>
         </view>
       </view>
     </view>

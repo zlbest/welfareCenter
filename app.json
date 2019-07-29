@@ -1,7 +1,8 @@
 {
-  "pages": ["pages/receiverAddress/receiverAddress",
-    "pages/goodsList/goodsList",
+  "pages": [
     "pages/goodsDetail/goodsDetail",
+    "pages/goodsList/goodsList",
+    "pages/receiverAddress/receiverAddress",
     "pages/exchangeFailed/exchangeFailed",
     "pages/exchangeList/exchangeList"
     

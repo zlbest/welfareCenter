@@ -40,7 +40,7 @@
 .goods-img {
   width: 260rpx;
   height: 100%;
-  background: #fcfcfc;
+  background: #f6f5f5;
 }
 .goods-detail {
   height: 100%;
@@ -50,14 +50,13 @@
   align-items: flex-start;
 }
 .goods-name {
-  display: -webkit-box;
+  display: inline-block;
   width: 390rpx;
   font-size: 32rpx;
   line-height: 48rpx;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
 .detail-bottom {
   width: 100%;
