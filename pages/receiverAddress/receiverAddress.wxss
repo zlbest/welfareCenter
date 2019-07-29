@@ -16,7 +16,7 @@
   line-height: 112rpx;
   flex-grow: 1;
   padding-left: 40rpx;
-  font-size: 16px;
+  font-size: 32rpx;
   color: #999;
 }
 .address-textarea{
@@ -99,4 +99,78 @@
 }
 .btn2{
   margin: 32rpx auto;
+}
+/* 安全验证弹窗 */
+.secure-pop{
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+}
+.secure-mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.3);
+}
+.secure-wrapper{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.secure-content{
+  width: 542rpx;
+  height: 554rpx;
+  padding: 30rpx;
+  background: white;
+  border-radius: 28rpx;
+}
+.secure-title{
+  width: 100%;
+  margin-top: 30rpx;
+  font-size: 36rpx;
+  color: #333333;
+  text-align: center;
+}
+.secure-line{
+  width: 422rpx;
+  margin: 0 auto;
+  border-bottom: 1rpx solid #eee;
+  justify-content: space-between;
+}
+.secure-input1{
+  width: 100%;
+  height: 70rpx; 
+  font-size: 32rpx;
+  color: #999;
+}
+.secure-input2{
+  width: 50%;
+  height: 70rpx;
+  font-size: 32rpx;
+  color: #999;
+}
+.secure-close{
+  width: 51rpx;
+  height: 51rpx;
+  line-height: 40rpx;
+  margin: 29rpx auto;
+  color: white;
+  font-size: 40rpx;
+  border: 1px solid white;
+  border-radius: 50%;
+  text-align: center;
+}
+.orange-text{
+  color: #FE8606;
+}
+.btn3{
+  width: 422rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 60rpx auto;
 }

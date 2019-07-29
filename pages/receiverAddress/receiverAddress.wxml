@@ -20,9 +20,10 @@
     <textarea class="address-textarea" bindinput='setDetail' placeholder-style="color:#d1d1d1;" placeholder="请输入详细收货地址" maxlength="200"></textarea>
   </view>
 
-  <button class="{{ ableToSubmit ? 'common-btn':'disable-btn' }} btn1" bindtap="goConfirm">确定</button>
+  <button class="{{ ableToConfirm ? 'common-btn':'disable-btn' }} btn1" bindtap="goConfirm">确定</button>
 </view>
 
+<!-- 地址确认弹窗 -->
 <view class="address-pop" wx:if="{{ showAddressPop }}">
   <view class="address-mask"></view>
   <view class="address-wrapper">
@@ -45,6 +46,26 @@
       </view>
     </view>
     <view class="pop-tips">确认后不可修改，审核通过后15个工作日内发放商品</view>
-    <view class="common-btn btn2">确认</view>
+    <view class="common-btn btn2" bindtap="goSecure">确认</view>
+  </view>
+</view>
+
+<!-- 安全验证弹窗 -->
+<view class="secure-pop" wx:if="{{ showSecurePop }}">
+  <view class="secure-mask"></view>
+  <view class="secure-wrapper">
+    <view class="secure-content">
+      <view class="secure-title">安全验证</view>
+      <view class="secure-line" style="margin-top: 80rpx;">
+        <input disabled="true" placeholder-style="color:#d1d1d1;" bindinput="setTruePhone" class="secure-input1" placeholder="手机号" maxlength="11" value="{{ truePhone }}"></input>
+      </view>
+      <view class="secure-line flex-row" style="margin-top: 39rpx;">
+        <input placeholder-style="color:#d1d1d1;" bindinput="setCode" class="secure-input2" placeholder="验证码" maxlength="6"></input>
+        <view class="orange-text" wx:if="{{ !tick }}" bindtap='getCode'>发送验证码</view>
+        <view class="orange-text" wx:else>{{ tick }}s</view>
+      </view>
+      <view class="{{ ableToSubmit ? 'common-btn':'disable-btn' }} btn3" bindtap="goSubmit">确认</view>
+    </view>
+    <view class="secure-close" bindtap="displaySecurePop">×</view>
   </view>
 </view>

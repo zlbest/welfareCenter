@@ -1,10 +1,10 @@
 {
-  "pages": ["pages/receiverAddress/receiverAddress",
+  "pages": [
     "pages/goodsList/goodsList",
     "pages/goodsDetail/goodsDetail",
     "pages/exchangeFailed/exchangeFailed",
-    "pages/exchangeList/exchangeList"
-    
+    "pages/exchangeList/exchangeList",
+    "pages/receiverAddress/receiverAddress"
   ],
   "window": {
     "backgroundTextStyle": "light",
