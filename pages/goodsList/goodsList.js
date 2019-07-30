@@ -5,13 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    lastTimeCoin: '-',
-    pageIndex: 0,
-    pageSize: 20,
-    allPages: 1,
-    goodsList: [],
-    showLoading: true,
-    loadingText: '加载中...'
+    lastTimeCoin: '-', //剩余时间币
+    pageIndex: 0, //页码
+    pageSize: 20, //页数
+    allPages: 1, //总页数
+    goodsList: [], //商品列表
+    showLoading: true, //列表加载
+    loadingText: '加载中...',
+    loading: true, //页面加载
   },
 
   /**
@@ -42,21 +43,17 @@ Page({
     app.POST('/schep-sns/sns/queryGoodsForApp',
       {
         pageSize: this.data.pageSize,
-        pageIndex: this.data.pageIndex,
-        showChannel: ''
+        pageIndex: this.data.pageIndex
       }).then(res => {
-        wx.hideLoading();
+        that.setData({
+          loading: false
+        });
         let data = res.data;
         if (data.responseCode == '0') {
           that.setData({
-            goodsList: that.data.goodsList.concat(data.rows),
+            goodsList: Array.isArray(data.rows) ? that.data.goodsList.concat(data.rows):[],
             allPages: Math.ceil(data.total/that.data.pageSize)
           });
-          if(data.total == 0){
-            that.setData({
-              showLoading: false
-            });
-          }
           if (data.rows.length < that.data.pageSize) {
             that.setData({
               loadingText: '没有更多了...'
@@ -73,13 +70,10 @@ Page({
   },
   //跳转商品详情页
   getDetail: function (e) {
-    wx.navigateTo({ url: '../goodsDetail/goodsDetail?goodsNo=' + e.target.dataset.id });
+    wx.navigateTo({ url: '../goodsDetail/goodsDetail?goodsNo=' + e.currentTarget.dataset.id });
   },
   //获取页面数据
   getPageData: function () {
-    wx.showLoading({
-      title: '加载中'
-    });
     let that = this;
     app.POST('/schep-sns/sns/getTimeCoinAbout',{})
     .then(res => {

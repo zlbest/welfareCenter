@@ -50,11 +50,12 @@
   align-items: flex-start;
 }
 .goods-name {
-  display: inline-block;
+  display: -webkit-box;
   width: 390rpx;
   font-size: 32rpx;
   line-height: 48rpx;
-  white-space: nowrap;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -82,6 +83,9 @@
   text-align: center;
   font-size: 24rpx;
   color: #fff;
+}
+.exchange-btn.disabled {
+  opacity: 0.3;
 }
 .list-bottom {
   width: 100%;
