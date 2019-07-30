@@ -1,0 +1,17 @@
+/* components/loading/loading.wxss */
+.container {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 2;
+}
+.container > image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38rpx;
+  height: 38rpx;
+}
