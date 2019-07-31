@@ -8,7 +8,7 @@
 }
 .goods-img {
   width: 100vw;
-  height: 374rpx;
+  height: 100vw;
   background: #f6f5f5;
 }
 .goods-name {
@@ -54,6 +54,13 @@
 .main-body image,video {
   width: 100% !important;
   height: auto;
+}
+.detail-none {
+  color: #666;
+}
+.goods-detail, .exchange-note {
+  margin-bottom: 40rpx;
+  line-height: 36rpx;
 }
 .footer {
   position: fixed;
