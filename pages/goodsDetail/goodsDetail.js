@@ -51,9 +51,13 @@ Page({
           goodsDetail: data.goodsDetail && decodeURI(data.goodsDetail),
           exchangeDetail: data.exchangeInstructions && decodeURI(data.exchangeInstructions)
         });
-        WxParse.wxParse('article1', 'html', that.data.goodsDetail, that, 5);
-        WxParse.wxParse('article2', 'html', that.data.exchangeDetail, that, 5);
-        
+        if(that.data.goodsDetail){
+          WxParse.wxParse('article1', 'html', that.data.goodsDetail, that, 5);
+        }
+        if(that.data.exchangeDetail){
+          WxParse.wxParse('article2', 'html', that.data.exchangeDetail, that, 5);
+        }
+               
       } else {
         wx.showToast({
           title: data.responseMsg || '',
