@@ -21,7 +21,7 @@
   </view>
   <view class="flex-row footer">
     <button wx:if="{{isAbleExchange}}" class="footer-btn" bindtap="toggleConfirm">立即兑换</button>
-    <button wx:else class="footer-btn disabled">已兑完</button>
+    <button wx:else class="footer-btn disabled" bindtap="disableExchange">已兑完</button>
   </view>
 
   <!-- 确认兑换弹窗 -->

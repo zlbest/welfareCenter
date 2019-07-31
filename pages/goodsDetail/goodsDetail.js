@@ -99,5 +99,13 @@ Page({
         isExchanging: false
       });
     });
+  },
+  //已兑完提示
+  disableExchange: function () {
+    wx.showToast({
+      title: '真遗憾,该商品已兑完了~',
+      icon: 'none',
+      duration: 2000
+    });
   }
 })
