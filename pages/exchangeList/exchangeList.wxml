@@ -1,2 +1,28 @@
 <!--pages/exchangeList/exchangeList.wxml-->
-<text>pages/exchangeList/exchangeList.wxml</text>
+<view class="container">
+  <view class="exchange-title">
+    <text style="font-size:32rpx;color:#999;">累计兑换平安时间币：</text>
+    <text style="font-size:32rpx;">{{ coins }}</text>
+  </view>
+  <view class="exchange-box">
+    <block wx:for="{{ exchangeList }}" wx:key="{{ index }}">
+      <view class="exchange-item flex-row" bindtap="goDetail" data-status="{{ item.status }}">
+        <image class="exchange-icon" src="{{ item.pictureUrl }}"></image>
+        <view class="exchange-content flex-column">
+          <view>
+            <view class="exchange-name {{ item.status == '3' ? 'opacity': '' }}">{{ item.goodsName }}</view>
+            <view class="exchange-price {{ item.status == '3' ? 'opacity': '' }}">{{ item.exchangePrice }}平安时间币</view>
+          </view>
+          <view>
+            <view class="exchange-date {{ item.status == '3' ? 'opacity': '' }}">{{ item.exchangeTime }}</view>
+            <view class="common-btn" wx:if="{{ item.status == '3' }}">查看详情</view>
+          </view>
+        </view>
+        <image wx:if="{{ item.status == '3' }}" class="exchange-status" src="../../images/status2.png"></image>
+        <image wx:if="{{ item.status == '2' }}" class="exchange-status" src="../../images/status3.png"></image>
+        <image wx:if="{{ item.status == '1' }}" class="exchange-status {{ item.status == '1' ? 'leftTop': '' }}" src="../../images/status1.png"></image>
+      </view>
+    </block>
+  </view>
+  
+</view>

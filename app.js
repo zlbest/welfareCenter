@@ -2,7 +2,8 @@
 App({
   onLaunch: function () {
     //设置token信息
-    wx.setStorageSync('token', "2dc151ca-4f21-4434-9c60-b6feaf467490")
+    wx.setStorageSync('token', '78dc6887-75d3-488a-8033-6cfb6ff5ba5a')
+    wx.setStorageSync('client', 'H5-HRX')
   },
   globalData: {
     baseUrl: 'https://schep-cdn-stg.pingan.com.cn'
@@ -18,12 +19,12 @@ App({
         header: { 
           'Content-Type': 'application/json;charset=UTF-8',
           'token': wx.getStorageSync('token'),
-          'client': '0'
+          'client': wx.getStorageSync('client')
          },
         success: function (res) {
           resolve(res)
         },
-        fail: function (e) {
+        fail: function (res) {
           reject(res)
         }
       });  
