@@ -4,6 +4,7 @@
   width: 100vw;
   height: auto;
   background: #fff;
+  overflow-x: hidden;
 }
 .goods-img {
   width: 100vw;
@@ -50,8 +51,8 @@
   font-size: 36rpx;
   color: #333;
 }
-.main-body img,video {
-  width: 100%;
+.main-body image,video {
+  width: 100% !important;
   height: auto;
 }
 .footer {
