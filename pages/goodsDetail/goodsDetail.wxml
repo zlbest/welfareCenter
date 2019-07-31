@@ -1,28 +1,49 @@
 <!--pages/goodsDetail/goodsDetail.wxml-->
 <import src="../../wxParse/wxParse.wxml"/>
 <view class="container">
-  <image class="goods-img" src="{{}}"></image>
-  <view class="goods-name">2020中超联赛决赛门票</view>
+  <image class="goods-img" src="{{goodsPic}}"></image>
+  <view class="goods-name">{{goodsName}}</view>
   <view class="flex-row detail">
-    <view class="detail-l">500.00 <text>平安时间币</text></view>
-    <view class="detail-r">库存 <text>24份</text></view>
+    <view class="detail-l">{{goodsPrice}}<text> 平安时间币</text></view>
+    <view class="detail-r">库存 <text>{{goodsStore}}份</text></view>
   </view>
   <view class="main-body">
     <view class="goods-detail">
       <view class="title">商品详情</view>
-      <template is="wxParse" data="{{wxParseData:article1.nodes}}"/>
+      <view wx:if="{{!goodsDetail}}">暂无商品详情</view>
+      <template wx:else is="wxParse" data="{{wxParseData:article1.nodes}}"/>
     </view>
     <view class="exchange-note">
       <view class="title">兑换说明</view>
-      <template is="wxParse" data="{{wxParseData:article2.nodes}}"/>
+      <view wx:if="{{!exchangeDetail}}">暂无兑换说明</view>
+      <template wx:else is="wxParse" data="{{wxParseData:article2.nodes}}"/>
     </view>
   </view>
-  <view class=" flex-row footer">
-    <text class="footer-btn">立即兑换</text>
+  <view class="flex-row footer">
+    <button wx:if="{{isAbleExchange}}" class="footer-btn" bindtap="toggleConfirm">立即兑换</button>
+    <button wx:else class="footer-btn disabled" bindtap="disableExchange">已兑完</button>
   </view>
 
   <!-- 确认兑换弹窗 -->
-  <view>
-  
+  <view wx:if="{{showConfirm}}" class="confirm-win">
+    <view class="main">
+      <view class="title">确认兑换
+        <image class="close" src="../../images/close.png" bindtap="toggleConfirm"></image>
+      </view>
+      <view class="flex-row goods">
+        <image class="pic" src="{{goodsPic}}"></image>
+        <view class="detail">
+          <view class="name">{{goodsName}}</view>
+          <view class="number">数量 x1</view>
+          <view class="price">{{goodsPrice}}<text> 平安时间币</text></view>
+        </view>
+      </view>
+      <view class="flex-row footer" style="position: relative;">
+        <button class="footer-btn" bindtap="goExchange">确认兑换</button>
+      </view>
+    </view>
   </view>
+
+  <!-- 页面加载loading -->
+  <loading wx:if="{{loading}}"></loading>
 </view>

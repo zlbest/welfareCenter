@@ -2,7 +2,7 @@
 App({
   onLaunch: function () {
     //设置token信息
-    wx.setStorageSync('token', "176a585c-359d-42b8-bd99-c2f54b32af55")
+    wx.setStorageSync('token', "2dc151ca-4f21-4434-9c60-b6feaf467490")
   },
   globalData: {
     baseUrl: 'https://schep-cdn-stg.pingan.com.cn'

@@ -5,7 +5,7 @@
     <view class="record-btn" bindtap="goExchangeList">兑换记录</view>
   </view>
   <!-- 空白列表 -->
-  <block wx:if="{{!showLoading && goodsList.length==0}}">
+  <block wx:if="{{goodsList.length==0}}">
     <view class="flex-column goods-none">
       <image src="../../images/empty_icon.png"></image>
       <text class="none-text">商品正在赶来的路上，敬请期待喔~</text>
@@ -22,10 +22,13 @@
             <text>{{item.exchangePrice || 0}}</text>
             <text class="unit">平安时间币</text>
           </view>
-          <view class="exchange-btn" style="opacity: {{item.availableNum <= 0 ? '0.3':'1'}}">{{item.availableNum <= 0 ? '已兑完':'兑换'}}</view>
+          <view wx:if="{{item.availableNum > 0}}" class="exchange-btn">兑换</view>
+          <view wx:else class="exchange-btn disabled">已兑完</view>
         </view>
       </view>
     </view>
     <view class="list-bottom" wx:if="{{ showLoading==true }}">{{loadingText}}</view>
   </block>
+  <!-- 页面加载loading -->
+  <loading wx:if="{{loading}}"></loading>
 </scroll-view>  
