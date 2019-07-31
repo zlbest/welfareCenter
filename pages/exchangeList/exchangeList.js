@@ -1,66 +1,66 @@
 // pages/exchangeList/exchangeList.js
+var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    coins: 99,
+    pageSize: 5,
+    pageIndex: 0,
+    total: 0,
+    exchangeList: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  getExchangeRecords() {/* 获取兑换记录 */
+    if(this.data.pageIndex * this.data.pageSize > this.data.total){
+      return
+    }
+    wx.showLoading({
+      title: '加载中',
+    });
+    this.data.pageIndex++;
+    app.POST('/schep-sns/sns/exchangeRecordForApp', {
+      pageSize: this.data.pageSize,
+      pageIndex: this.data.pageIndex
+    }).then((res) => {
+      let data = res.data;
+      if (data.responseCode == 0) {
+        this.setData({ 
+          total: data.total,
+          exchangeList: [...this.data.exchangeList,...data.rows]
+        })
+      } else {
+        wx.showToast({
+          title: data.responseMsg,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      wx.hideLoading();
+    });
+  }, 
+  getCoins() {/* 获取时间币个数 */
+    app.POST('/schep-sns/sns/getTimeCoinAbout', {})
+    .then((res) => {
+      let data = res.data;
+      if (data.responseCode == 0) {
+        this.setData({
+          coins: data.curObj.expendTimeCoin
+        })
+      } else {
+        wx.showToast({
+          title: data.responseMsg,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    });
+  }, 
+  goDetail(e){
+    console.log(e)
+  },
   onLoad: function (options) {
-
+    this.getExchangeRecords()
+    this.getCoins()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.getExchangeRecords()
   }
 })

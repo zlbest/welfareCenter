@@ -2,7 +2,7 @@
 App({
   onLaunch: function () {
     //设置token信息
-    wx.setStorageSync('token', '9cd000e1-cca7-42ab-aa9a-ec56fe6f140b')
+    wx.setStorageSync('token', '78dc6887-75d3-488a-8033-6cfb6ff5ba5a')
     wx.setStorageSync('client', 'H5-HRX')
   },
   globalData: {
@@ -24,7 +24,7 @@ App({
         success: function (res) {
           resolve(res)
         },
-        fail: function (e) {
+        fail: function (res) {
           reject(res)
         }
       });  

@@ -83,6 +83,12 @@ Page({
             clearInterval(this.data.timer);
           }
         }, 1000);
+      } else {
+        wx.showToast({
+          title: data.responseMsg,
+          icon: 'none',
+          duration: 2000
+        })
       }
     });
   }, 
@@ -116,6 +122,12 @@ Page({
       let data = res.data;console.log(res);
       if (data.responseCode == 0) {
         this.setData({ truePhone: data.telephone });
+      } else {
+        wx.showToast({
+          title: data.responseMsg,
+          icon: 'none',
+          duration: 2000
+        })
       }
     });
   },
