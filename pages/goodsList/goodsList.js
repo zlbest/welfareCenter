@@ -45,9 +45,6 @@ Page({
         pageSize: this.data.pageSize,
         pageIndex: this.data.pageIndex
       }).then(res => {
-        that.setData({
-          loading: false
-        });
         let data = res.data;
         if (data.responseCode == '0') {
           that.setData({
@@ -66,6 +63,9 @@ Page({
             duration: 2000
           });
         }
+        that.setData({
+          loading: false
+        });
       });
   },
   //跳转商品详情页
