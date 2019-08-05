@@ -2,7 +2,6 @@
   "pages": [
     "pages/goodsList/goodsList",
     "pages/goodsDetail/goodsDetail",
-    "pages/receiverAddress/receiverAddress",
     "pages/exchangeFailed/exchangeFailed",
     "pages/exchangeList/exchangeList",
     "pages/receiverAddress/receiverAddress"
