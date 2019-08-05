@@ -55,6 +55,9 @@
   width: 100% !important;
   height: auto;
 }
+.wxParse-p {
+  overflow: hidden;
+}
 .detail-none {
   color: #666;
 }
