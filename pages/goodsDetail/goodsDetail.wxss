@@ -109,7 +109,7 @@
   background: #fff;
   width: 100%;
   height: auto;
-  animation: slide .5s ease alternate;
+  animation: slide .3s ease alternate;
 }
 .main .title {
   position: relative;
