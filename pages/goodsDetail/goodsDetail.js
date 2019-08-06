@@ -60,7 +60,7 @@ Page({
                
       } else {
         wx.showToast({
-          title: data.responseMsg || '',
+          title: res.data.responseMsg || '',
           icon: 'none',
           duration: 2000
         });
