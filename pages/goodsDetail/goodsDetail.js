@@ -85,7 +85,7 @@ Page({
       exchangeNum: 1
     }).then(res => {
       const data = res.data;
-      if (res.data.responseCode == '0') {
+      if (data.responseCode == '0') {
         wx.navigateTo({ url: '../receiverAddress/receiverAddress?goodsNo='+that.data.id });
         setTimeout(() => {
           that.setData({
