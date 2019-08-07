@@ -6,7 +6,7 @@
   </view>
   <view class="address-line flex-row">
     <text class="address-label">手机号码</text>
-    <input class="address-input" bindinput='setPhone' placeholder-style="color:#d1d1d1;" placeholder="请填写" maxlength="11"></input>
+    <input type="number" class="address-input" bindinput='setPhone' placeholder-style="color:#d1d1d1;" placeholder="请填写" maxlength="11"></input>
   </view>
   <view class="address-line flex-row">
     <text class="address-label">所在地区</text>
@@ -15,9 +15,9 @@
       <view class="address-placeholder" wx:else>请选择省、市、地区</view>
     </picker>
   </view>
-  <view class="address-line flex-row">
+  <view class="address-line1 flex-row">
     <text class="address-label">详细地址</text>
-    <textarea class="address-textarea" bindinput='setDetail' placeholder-style="color:#d1d1d1;" placeholder="请输入详细收货地址" maxlength="200"></textarea>
+    <textarea class="address-textarea {{ showSecurePop ? 'test':'' }}" bindinput='setDetail' placeholder-style="color:#d1d1d1;" placeholder="请输入详细收货地址" maxlength="200"></textarea>
   </view>
 
   <button class="{{ ableToConfirm ? 'common-btn':'disable-btn' }} btn1" bindtap="goConfirm">确定</button>
@@ -61,7 +61,7 @@
       </view>
       <view class="secure-line flex-row" style="margin-top: 39rpx;">
         <input placeholder-style="color:#d1d1d1;" bindinput="setCode" class="secure-input2" placeholder="验证码" maxlength="6"></input>
-        <view class="orange-text" wx:if="{{ !tick }}" bindtap='getCode'>发送验证码</view>
+        <view class="orange-text" wx:if="{{ !tick }}" bindtap='getCode'>{{ secureText }}</view>
         <view class="orange-text" wx:else>{{ tick }}s</view>
       </view>
       <view class="{{ ableToSubmit ? 'common-btn':'disable-btn' }} btn3" bindtap="goSubmit">确认</view>

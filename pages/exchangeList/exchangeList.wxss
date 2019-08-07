@@ -5,7 +5,7 @@
   background-color: rgb(242, 241, 241)
 }
 .exchange-title{
-  width: 100%;
+  width: 100vw;
   line-height: 120rpx;
   padding: 0 40rpx;
   background-color: white;
@@ -42,9 +42,16 @@
 }
 .leftTop{
   width: 112rpx;
-  height: 40rpx;
+  height: 50rpx;
   left: 0;
   top: 0;
+}
+.exchange-wait{
+  position: absolute;
+  left: 10rpx;
+  top: 6rpx;
+  color: white;
+  z-index: 1;
 }
 .exchange-name{
   font-size: 32rpx;
@@ -72,4 +79,28 @@
 }
 .opacity{
   opacity: 0.3;
+}
+
+/* 缺省样式 */
+.goods-none {
+  width: 100vw;
+  height: 100vh;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+  background: #fff;
+}
+.goods-none > image {
+  width: 160rpx;
+  height: 160rpx;
+  margin-top: 220rpx;
+}
+.none-text {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 40rpx;
+}
+.no-more{
+  width: 100%;
+  color: #999;
+  text-align: center;
 }

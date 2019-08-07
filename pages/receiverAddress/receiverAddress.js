@@ -1,12 +1,11 @@
 // pages/receiverAddress/receiverAddress.js
-var app = getApp();
+const app = getApp();
 Page({
   data: {
-    id: '01225',
+    id: '',
     name: '',
     phone: '',
     region: ['', '', ''],
-    customItem: '全部',
     detail: '',
     ableToConfirm: false,
     truePhone: '',
@@ -16,6 +15,7 @@ Page({
     ableToSubmit: false,
     showAddressPop: false,//显示地址确认弹窗
     showSecurePop: false,//安全验证弹窗
+    secureText: '发送验证码',
   },
   setName(e) {
     this.setData({
@@ -76,11 +76,14 @@ Page({
     }).then((res) => {
       let data = res.data;
       if (data.responseCode == 0) {
-        this.setData({ tick: 60 });
+        this.setData({ tick: 10 });
         this.data.timer = setInterval(() => {
           this.setData({ tick: this.data.tick - 1 });
           if (this.data.tick == 0) {
             clearInterval(this.data.timer);
+            this.setData({
+              secureText: '重新发送'
+            })
           }
         }, 1000);
       } else {
@@ -131,7 +134,10 @@ Page({
       }
     });
   },
-  goSubmit() {
+  goSubmit() {//提交订单
+    wx.showLoading({
+      title: '加载中',
+    });
     app.POST('/schep-sns/sns/exchangeGoods', {
       goodsNo: this.data.id,
       exchangeNum: 1,
@@ -150,12 +156,14 @@ Page({
       if (data.responseCode == '0') {
         wx.showToast({
           title: '恭喜，商品兑换成功!',
-          icon: 'none',
+          icon: 'success',
           duration: 2000
         })
-        wx.navigateBack({
-          delta: 1
-        })
+        setTimeout(function(){
+          wx.navigateBack({
+            delta: 1
+          })
+        },1000)
       } else if (data.responseCode == '101004'){
         wx.showToast({
           title: '验证码有误，请重新填写',
@@ -169,58 +177,13 @@ Page({
           duration: 2000
         })
       }
+      wx.hideLoading();
     });
   },
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.setData({
+      id: options.goodsNo
+    })
+    console.log(this.data.id)
   }
 })

@@ -1,13 +1,14 @@
 <!--pages/exchangeList/exchangeList.wxml-->
 <view class="container">
-  <view class="exchange-title">
+  <view class="exchange-title" wx:if="{{ exchangeList.length > 0 }}">
     <text style="font-size:32rpx;color:#999;">累计兑换平安时间币：</text>
     <text style="font-size:32rpx;">{{ coins }}</text>
   </view>
-  <view class="exchange-box">
+  <view class="exchange-box" wx:if="{{ exchangeList.length > 0 }}">
     <block wx:for="{{ exchangeList }}" wx:key="{{ index }}">
-      <view class="exchange-item flex-row" bindtap="goDetail" data-status="{{ item.status }}">
+      <view class="exchange-item flex-row">
         <image class="exchange-icon" src="{{ item.pictureUrl }}"></image>
+        <text class="exchange-wait">待审核</text>
         <view class="exchange-content flex-column">
           <view>
             <view class="exchange-name {{ item.status == '3' ? 'opacity': '' }}">{{ item.goodsName }}</view>
@@ -15,7 +16,7 @@
           </view>
           <view>
             <view class="exchange-date {{ item.status == '3' ? 'opacity': '' }}">{{ item.exchangeTime }}</view>
-            <view class="common-btn" wx:if="{{ item.status == '3' }}">查看详情</view>
+            <view class="common-btn" wx:if="{{ item.status == '3' }}" bindtap="goDetail" data-status="{{ item.status }}" data-id="{{ item.guid }}">查看详情</view>
           </view>
         </view>
         <image wx:if="{{ item.status == '3' }}" class="exchange-status" src="../../images/status2.png"></image>
@@ -24,5 +25,12 @@
       </view>
     </block>
   </view>
+  <view class="exchange-box1" wx:else>
+    <view class="flex-column goods-none">
+      <image src="../../images/empty_icon.png"></image>
+      <text class="none-text">暂无兑换记录</text>
+    </view>
+  </view>
   
+  <view class="no-more" wx:if="{{ nomore }}">没有更多了</view>
 </view>

@@ -1,15 +1,19 @@
 // pages/exchangeList/exchangeList.js
-var app = getApp();
+const app = getApp();
 Page({
   data: {
-    coins: 99,
-    pageSize: 5,
+    coins: 0,
+    pageSize: 20,
     pageIndex: 0,
     total: 0,
-    exchangeList: []
+    exchangeList: [],
+    nomore: false
   },
   getExchangeRecords() {/* 获取兑换记录 */
     if(this.data.pageIndex * this.data.pageSize > this.data.total){
+      this.setData({
+        nomore: true
+      })
       return
     }
     wx.showLoading({
@@ -42,7 +46,7 @@ Page({
       let data = res.data;
       if (data.responseCode == 0) {
         this.setData({
-          coins: data.curObj.expendTimeCoin
+          coins: data.curObj.expendTimeCoin ? data.curObj.expendTimeCoin : '-'
         })
       } else {
         wx.showToast({
@@ -54,7 +58,11 @@ Page({
     });
   }, 
   goDetail(e){
-    console.log(e)
+    if (e.currentTarget.dataset.status == '3'){
+      wx.navigateTo({
+        url: '../exchangeFailed/exchangeFailed?id=' + e.currentTarget.dataset.id,
+      })
+    }
   },
   onLoad: function (options) {
     this.getExchangeRecords()
