@@ -10,12 +10,12 @@
   <view class="main-body">
     <view class="goods-detail">
       <view class="title">商品详情</view>
-      <view wx:if="{{!goodsDetail}}">暂无商品详情</view>
+      <view wx:if="{{!goodsDetail}}" class="detail-none">暂无商品详情</view>
       <template wx:else is="wxParse" data="{{wxParseData:article1.nodes}}"/>
     </view>
     <view class="exchange-note">
       <view class="title">兑换说明</view>
-      <view wx:if="{{!exchangeDetail}}">暂无兑换说明</view>
+      <view wx:if="{{!exchangeDetail}}" class="detail-none">暂无兑换说明</view>
       <template wx:else is="wxParse" data="{{wxParseData:article2.nodes}}"/>
     </view>
   </view>

@@ -8,7 +8,7 @@
 }
 .goods-img {
   width: 100vw;
-  height: 374rpx;
+  height: 100vw;
   background: #f6f5f5;
 }
 .goods-name {
@@ -55,6 +55,16 @@
   width: 100% !important;
   height: auto;
 }
+.wxParse-p {
+  overflow: hidden;
+}
+.detail-none {
+  color: #666;
+}
+.goods-detail, .exchange-note {
+  margin-bottom: 40rpx;
+  line-height: 36rpx;
+}
 .footer {
   position: fixed;
   bottom: 0;
@@ -99,7 +109,7 @@
   background: #fff;
   width: 100%;
   height: auto;
-  animation: slide .5s ease alternate;
+  animation: slide .5s ease;
 }
 .main .title {
   position: relative;

@@ -60,7 +60,7 @@ Page({
                
       } else {
         wx.showToast({
-          title: data.responseMsg || '',
+          title: res.data.responseMsg || '',
           icon: 'none',
           duration: 2000
         });
@@ -85,7 +85,7 @@ Page({
       exchangeNum: 1
     }).then(res => {
       const data = res.data;
-      if (res.data.responseCode == '0') {
+      if (data.responseCode == '0') {
         wx.navigateTo({ url: '../receiverAddress/receiverAddress?goodsNo='+that.data.id });
         setTimeout(() => {
           that.setData({

@@ -80,7 +80,7 @@ Page({
       let data = res.data;
       if (data.responseCode == '0') {
         that.setData({
-          lastTimeCoin: data.curObj.availableTimeCoin
+          lastTimeCoin: data.curObj.availableTimeCoin || '-'
         });
       }
     });
