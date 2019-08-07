@@ -8,7 +8,6 @@
     <block wx:for="{{ exchangeList }}" wx:key="{{ index }}">
       <view class="exchange-item flex-row">
         <image class="exchange-icon" src="{{ item.pictureUrl }}"></image>
-        <text class="exchange-wait">待审核</text>
         <view class="exchange-content flex-column">
           <view>
             <view class="exchange-name {{ item.status == '3' ? 'opacity': '' }}">{{ item.goodsName }}</view>
@@ -22,6 +21,7 @@
         <image wx:if="{{ item.status == '3' }}" class="exchange-status" src="../../images/status2.png"></image>
         <image wx:if="{{ item.status == '2' }}" class="exchange-status" src="../../images/status3.png"></image>
         <image wx:if="{{ item.status == '1' }}" class="exchange-status {{ item.status == '1' ? 'leftTop': '' }}" src="../../images/status1.png"></image>
+        <text wx:if="{{ item.status == '1' }}" class="exchange-wait">待审核</text>
       </view>
     </block>
   </view>
