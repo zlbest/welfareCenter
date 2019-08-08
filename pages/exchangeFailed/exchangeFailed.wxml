@@ -4,4 +4,7 @@
   <text>未成功兑换</text>
   <text>{{goodsName}}</text>
   <text class="reason">原因：{{reason}}</text>
+  
+  <!-- 页面加载loading -->
+  <loading wx:if="{{loading}}"></loading>
 </view>

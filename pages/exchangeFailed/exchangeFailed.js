@@ -8,7 +8,8 @@ Page({
   data: {
     id: '',
     goodsName: '',
-    reason: ''
+    reason: '',
+    loading: true
   },
 
   /**
@@ -23,16 +24,15 @@ Page({
 
   //获取兑换失败详情
   getFailedDetail: function () {
-    wx.showLoading({
-      title: '加载中'
-    });
     let that = this;
     app.POST('/schep-sns/sns/exchangeRecordDetailForApp', {
       recordNo: that.data.id
     }).then(res => {
       let data = res.data;
+      that.setData({
+        loading: false
+      });
       if (data.responseCode == '0') {
-        wx.hideLoading();
         that.setData({
           goodsName: data.curObj.goodsName,
           reason: data.curObj.rejectedReason
