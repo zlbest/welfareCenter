@@ -29,7 +29,7 @@ Page({
 
   //获取商品列表
   getGoodsList: function () {
-    if (this.data.pageIndex == this.data.allPages) {
+    if (this.data.pageIndex >= this.data.allPages) {
       this.setData({
         loadingText: '没有更多了...'
       });
@@ -47,14 +47,16 @@ Page({
       }).then(res => {
         let data = res.data;
         if (data.responseCode == '0') {
-          that.setData({
-            goodsList: Array.isArray(data.rows) ? that.data.goodsList.concat(data.rows):[],
-            allPages: Math.ceil(data.total/that.data.pageSize)
-          });
-          if (data.rows.length < that.data.pageSize) {
+          if(Array.isArray(data.rows)){
             that.setData({
-              loadingText: '没有更多了...'
+              goodsList: that.data.goodsList.concat(data.rows.filter(v => v.isSeckill != '1')),
+              allPages: Math.ceil(data.total/that.data.pageSize)
             });
+            if (data.rows.length < that.data.pageSize) {
+              that.setData({
+                loadingText: '没有更多了...'
+              });
+            }
           }
         }else {
           wx.showToast({

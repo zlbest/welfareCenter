@@ -26,7 +26,6 @@ Page({
   onLoad: function (options) {
     this.setData({
       id: options.goodsNo
-      //id: '01225'
     });
     this.getGoodsDetail();
   },
